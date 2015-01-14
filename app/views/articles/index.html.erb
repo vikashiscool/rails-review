@@ -1,2 +1,8 @@
-<h1>Articles</h1>
+<h1><%= @user.email %>'s Articles</h1>
 
+<ul>
+  <% @articles.each do |article| %>
+    <h3><%= article.title %></h3>
+    <p><%= article.body %></p>
+  <% end %>
+</ul>
