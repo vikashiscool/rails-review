@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
+      ArchiveArticleJob.set(wait: 30.days).perform_later @article
       redirect_to @article
     else
       render :new
